@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.fyd</groupId>
-	<artifactId>HelpDesk</artifactId>
+	<artifactId>SystemaFYD</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>HelpDesk</name>
-	<description>Projeto HelpDesk</description>
+	<name>SistemaFYD</name>
+	<description>Projeto Sistema FYD</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
