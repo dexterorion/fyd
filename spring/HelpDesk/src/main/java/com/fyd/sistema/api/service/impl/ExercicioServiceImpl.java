@@ -9,5 +9,4 @@ import com.fyd.sistema.api.service.ExercicioService;
 @Service
 public class ExercicioServiceImpl extends BaseServiceImpl<Exercicio, ExercicioRepository>
 	implements ExercicioService{
-
 }
