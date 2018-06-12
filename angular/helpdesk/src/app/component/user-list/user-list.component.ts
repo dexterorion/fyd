@@ -46,18 +46,18 @@ export class UserListComponent implements OnInit {
   }
 
   edit(id:string){
-    this.router.navigate(['/user-new', id]);
+    this.router.navigate(['/user/new', id]);
   }
 
   delete(id:string){
-    this.dialogService.confirm('Do you want to delete the user?')
+    this.dialogService.confirm('Você quer remover o usuário?')
       .then((candelete:boolean) =>{
           if(candelete){
             this.message = {};
             this.userService.delete(id).subscribe((responseApi:ResponseApi) =>{
               this.showMessage({
                 type: 'success',
-                text: 'Record deleted'
+                text: 'Removido!'
               });
               this.findAll(this.page, this.count);
             }, err => {

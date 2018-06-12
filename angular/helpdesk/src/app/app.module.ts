@@ -1,4 +1,3 @@
-import { TicketService } from './service/ticket.service';
 import { DialogService } from './dialog.service';
 import { AuthGuard } from './component/security/auth.guard';
 import { AuthInterceptor } from './component/security/auth.interceptor';
@@ -19,10 +18,9 @@ import { LoginComponent } from './component/security/login/login.component';
 import { routes } from './app.routes';
 import { UserNewComponent } from './component/user-new/user-new.component';
 import { UserListComponent } from './component/user-list/user-list.component';
-import { TicketNewComponent } from './component/ticket-new/ticket-new.component';
-import { TicketListComponent } from './component/ticket-list/ticket-list.component';
-import { TicketDetailComponent } from './component/ticket-detail/ticket-detail.component';
-import { SummaryComponent } from './component/summary/summary.component';
+import { FuncaoExercicioNewComponent } from './component/funcao-exercicio-new/funcao-exercicio-new.component';
+import { FuncaoExercicioListComponent } from './component/funcao-exercicio-list/funcao-exercicio-list.component';
+import { FuncaoExercicioService } from './service/funcao-exercicio.service';
 
 
 @NgModule({
@@ -35,15 +33,19 @@ import { SummaryComponent } from './component/summary/summary.component';
     LoginComponent,
     UserNewComponent,
     UserListComponent,
-    TicketNewComponent,
-    TicketListComponent,
-    TicketDetailComponent,
-    SummaryComponent
+    FuncaoExercicioNewComponent,
+    FuncaoExercicioListComponent
   ],
   imports: [
     BrowserModule,routes, HttpClientModule, FormsModule
   ],
-  providers: [UserService, SharedService, DialogService, AuthGuard, TicketService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [
+    UserService,
+    SharedService,
+    DialogService,
+    AuthGuard,
+    FuncaoExercicioService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

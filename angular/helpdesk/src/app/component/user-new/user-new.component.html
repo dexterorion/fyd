@@ -1,7 +1,7 @@
 <div class="col-md-6" style="margin-left: 0%">
     <div class="box box-info">
       <div class="box-header with-border">
-        <h3 class="box-title">New User</h3>
+        <h3 class="box-title">Novo usuário</h3>
       </div>
       <form class="form-horizontal" #form="ngForm" (ngSubmit)= "register()">
         <div [ngClass]="classCss" role="alert" *ngIf="message">
@@ -20,28 +20,28 @@
                   type="email"
                   name="email"
                   email>
-              <span class="help-block" *ngIf="email.invalid && email.dirty"> Email is invalid </span>
+              <span class="help-block" *ngIf="email.invalid && email.dirty"> Email é inválido </span>
             </div>
           </div>
 
           <div [ngClass]="getFromGroupClass(password.invalid, password.dirty)">
-              <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+              <label for="inputPassword" class="col-sm-2 control-label">Senha</label>
               <div class="col-sm-10">
                 <input 
                     [(ngModel)] = "user.password"
                     #password="ngModel"
                     class="form-control" 
                     id="inputPassword" 
-                    placeholder="Password" 
+                    placeholder="Senha" 
                     type="password"
                     name="password"
                     required>
-                <span class="help-block" *ngIf="password.invalid && password.dirty"> Password is required </span>
+                <span class="help-block" *ngIf="password.invalid && password.dirty"> Senha é necessária </span>
               </div>
           </div>
 
           <div [ngClass]="getFromGroupClass(profile.invalid, profile.dirty)">
-              <label for="inputProfile" class="col-sm-2 control-label">Profile</label>
+              <label for="inputProfile" class="col-sm-2 control-label">Perfil</label>
               <div class="col-sm-10">
                 <select 
                     [(ngModel)] = "user.profile"
@@ -55,13 +55,13 @@
                     <option>ROLE_CUSTOMER</option>
                     <option>ROLE_TECHNICIAN</option>
                 </select>
-                <span class="help-block" *ngIf="profile.invalid && profile.dirty"> Profile is required </span>
+                <span class="help-block" *ngIf="profile.invalid && profile.dirty"> Perfil é necessário </span>
               </div>
           </div>
 
         </div>
         <div class="box-footer">
-          <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Submit</button>
+          <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Salvar</button>
         </div>
       </form>
     </div>

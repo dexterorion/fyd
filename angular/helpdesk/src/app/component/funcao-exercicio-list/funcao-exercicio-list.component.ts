@@ -1,43 +1,39 @@
 import { ResponseApi } from './../../model/response-api';
 import { Router } from '@angular/router';
-import { TicketService } from './../../service/ticket.service';
+import { FuncaoExercicioService } from './../../service/funcao-exercicio.service';
 import { DialogService } from './../../dialog.service';
-import { Ticket } from './../../model/ticket.model';
 import { SharedService } from './../../service/shared.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-ticket-list',
-  templateUrl: './ticket-list.component.html',
-  styleUrls: ['./ticket-list.component.css']
+  selector: 'app-funcao-exercicio-list',
+  templateUrl: './funcao-exercicio-list.component.html',
+  styleUrls: ['./funcao-exercicio-list.component.css']
 })
-export class TicketListComponent implements OnInit {
-
-  assignedToMe: boolean = false;
-  page:number=0;
-  count:number=5;
+export class FuncaoExercicioListComponent implements OnInit {
+  page: number = 0;
+  count: number = 5;
   pages:Array<number>;
-  shared:SharedService;
+  shared: SharedService;
   message: {};
   classCss: {};
-  listTicket = [];
-  ticketFilter = new Ticket('',0,'','','','',null,null,'',null);
+  listFuncoes=[];
 
   constructor(
     private dialogService: DialogService,
-    private ticketService: TicketService,
+    private funcaoExercicioService: FuncaoExercicioService,
     private router: Router
   ) { 
     this.shared = SharedService.getInstance();
   }
 
   ngOnInit() {
-    this.findAll(this.page,this.count);
+    this.findAll(this.page, this.count);
   }
 
   findAll(page:number, count:number){
-    this.ticketService.findAll(page, count).subscribe((responseApi:ResponseApi) => {
-      this.listTicket = responseApi['data']['content'];
+    this.funcaoExercicioService.findAll(page, count).subscribe((responseApi:ResponseApi) => {
+      this.listFuncoes = responseApi['data']['content'];
       this.pages = new Array(responseApi['data']['totalPages']);
     }, err => {
       this.showMessage({
@@ -47,49 +43,19 @@ export class TicketListComponent implements OnInit {
     });
   }
 
-  filter(): void {
-    this.page = 0;
-    this.count = 0;
-
-    this.ticketService.findByParameters(this.page, this.count, this.assignedToMe, this.ticketFilter)
-    .subscribe((responseApi: ResponseApi) => {
-      this.ticketFilter.title = this.ticketFilter.title == 'uninformed' ? '' : this.ticketFilter.title;
-      this.ticketFilter.number = this.ticketFilter.number == 0 ? null : this.ticketFilter.number;
-      this.listTicket = responseApi['data']['content']; 
-      this.pages = new Array(responseApi['data']['totalPages']); 
-    }, err => {
-      this.showMessage({
-        type: 'error',
-        text: err['error']['errors'][0]
-      });
-    });
-  }
-
-  cleanFilter(): void {
-    this.assignedToMe = false;
-    this.page = 0;
-    this.count = 5;
-    this.ticketFilter = new Ticket('',0,'','','','',null,null,'',null);
-    this.findAll(this.page, this.count);
-  }
-
   edit(id:string){
-    this.router.navigate(['/ticket-new', id]);
-  }
-
-  detail(id:string){
-    this.router.navigate(['/ticket-detail', id]);
+    this.router.navigate(['/funcao-exercicio/new', id]);
   }
 
   delete(id:string){
-    this.dialogService.confirm('Do you want to delete the ticket?')
+    this.dialogService.confirm('Você quer remover a função exercício?')
       .then((candelete:boolean) =>{
           if(candelete){
             this.message = {};
-            this.ticketService.delete(id).subscribe((responseApi:ResponseApi) =>{
+            this.funcaoExercicioService.delete(id).subscribe((responseApi:ResponseApi) =>{
               this.showMessage({
                 type: 'success',
-                text: 'Record deleted'
+                text: 'Removido!'
               });
               this.findAll(this.page, this.count);
             }, err => {
