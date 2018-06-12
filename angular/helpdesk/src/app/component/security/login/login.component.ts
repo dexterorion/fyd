@@ -33,6 +33,8 @@ export class LoginComponent implements OnInit {
       this.shared.user = userAuthentication.user;
       this.shared.user.profile = this.shared.user.profile.substring(5);
       this.shared.showTemplate.emit(true);
+      localStorage.setItem('currentUser', JSON.stringify(userAuthentication.user));
+      localStorage.setItem('currentToken', userAuthentication.token);
       this.router.navigate(['/']);
     }, err => {
       this.shared.token = null;

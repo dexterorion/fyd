@@ -18,7 +18,17 @@ export class SharedService {
       this.instance = new SharedService();
     }
 
+    if(localStorage.getItem('currentUser') && localStorage.getItem('currentToken')){
+      this.instance.token = localStorage.getItem('currentToken');
+      this.instance.user = JSON.parse(localStorage.getItem('currentUser'));
+      this.instance.showTemplate.emit(true);
+    }
+
     return this.instance;
+  }
+
+  public static emptyInstance(){
+    this.instance = null;
   }
 
   isLoggedIn():boolean{
