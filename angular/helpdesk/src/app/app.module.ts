@@ -1,3 +1,5 @@
+import { NivelExecucaoService } from './service/nivel-execucao.service';
+import { TipoTreinoService } from './service/tipo-treino.service';
 import { DialogService } from './dialog.service';
 import { AuthGuard } from './component/security/auth.guard';
 import { AuthInterceptor } from './component/security/auth.interceptor';
@@ -21,6 +23,16 @@ import { UserListComponent } from './component/user-list/user-list.component';
 import { FuncaoExercicioNewComponent } from './component/funcao-exercicio-new/funcao-exercicio-new.component';
 import { FuncaoExercicioListComponent } from './component/funcao-exercicio-list/funcao-exercicio-list.component';
 import { FuncaoExercicioService } from './service/funcao-exercicio.service';
+import { PilarExercicioService } from './service/pilar-exercicio.service';
+import { PilarExercicioListComponent } from './component/pilar-exercicio-list/pilar-exercicio-list.component';
+import { PilarExercicioNewComponent } from './component/pilar-exercicio-new/pilar-exercicio-new.component';
+import { ModalidadeTreinoService } from './service/modalidade-treino.service';
+import { ModalidadeTreinoListComponent } from './component/modalidade-treino-list/modalidade-treino-list.component';
+import { ModalidadeTreinoNewComponent } from './component/modalidade-treino-new/modalidade-treino-new.component';
+import { TipoTreinoListComponent } from './component/tipo-treino-list/tipo-treino-list.component';
+import { TipoTreinoNewComponent } from './component/tipo-treino-new/tipo-treino-new.component';
+import { NivelExecucaoListComponent } from './component/nivel-execucao-list/nivel-execucao-list.component';
+import { NivelExecucaoNewComponent } from './component/nivel-execucao-new/nivel-execucao-new.component';
 
 
 @NgModule({
@@ -34,7 +46,15 @@ import { FuncaoExercicioService } from './service/funcao-exercicio.service';
     UserNewComponent,
     UserListComponent,
     FuncaoExercicioNewComponent,
-    FuncaoExercicioListComponent
+    FuncaoExercicioListComponent,
+    PilarExercicioListComponent,
+    PilarExercicioNewComponent,
+    ModalidadeTreinoListComponent,
+    ModalidadeTreinoNewComponent,
+    TipoTreinoListComponent,
+    TipoTreinoNewComponent,
+    NivelExecucaoListComponent,
+    NivelExecucaoNewComponent
   ],
   imports: [
     BrowserModule,routes, HttpClientModule, FormsModule
@@ -45,6 +65,10 @@ import { FuncaoExercicioService } from './service/funcao-exercicio.service';
     DialogService,
     AuthGuard,
     FuncaoExercicioService,
+    PilarExercicioService,
+    ModalidadeTreinoService,
+    TipoTreinoService,
+    NivelExecucaoService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })

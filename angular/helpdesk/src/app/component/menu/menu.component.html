@@ -26,6 +26,54 @@
             <li><a [routerLink]="['/funcao-exercicio/new']"><i class="fa fa-circle-o"></i> Nova função de exercício</a></li>
           </ul>
         </li>
+        <li class="treeview" *ngIf="shared.user.profile == 'ADMIN'">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Pilar exercício</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a [routerLink]="['/pilar-exercicio']"><i class="fa fa-circle-o"></i> Listagem</a></li>
+            <li><a [routerLink]="['/pilar-exercicio/new']"><i class="fa fa-circle-o"></i> Novo pilar de exercício</a></li>
+          </ul>
+        </li>
+        <li class="treeview" *ngIf="shared.user.profile == 'ADMIN'">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Modalidade de treino</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a [routerLink]="['/modalidade-treino']"><i class="fa fa-circle-o"></i> Listagem</a></li>
+            <li><a [routerLink]="['/modalidade-treino/new']"><i class="fa fa-circle-o"></i> Nova modalidade de treino</a></li>
+          </ul>
+        </li>
+        <li class="treeview" *ngIf="shared.user.profile == 'ADMIN'">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Tipo de treino</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a [routerLink]="['/tipo-treino']"><i class="fa fa-circle-o"></i> Listagem</a></li>
+            <li><a [routerLink]="['/tipo-treino/new']"><i class="fa fa-circle-o"></i> Novo tipo de treino</a></li>
+          </ul>
+        </li>
+        <li class="treeview" *ngIf="shared.user.profile == 'ADMIN'">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Nível de execução</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a [routerLink]="['/nivel-execucao']"><i class="fa fa-circle-o"></i> Listagem</a></li>
+            <li><a [routerLink]="['/nivel-execucao/new']"><i class="fa fa-circle-o"></i> Novo nível de execução</a></li>
+          </ul>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

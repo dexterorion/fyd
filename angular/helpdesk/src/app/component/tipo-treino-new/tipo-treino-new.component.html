@@ -1,0 +1,47 @@
+<div class="col-md-6" style="margin-left: 0%">
+  <div class="box box-info">
+    <div class="box-header with-border">
+      <h3 class="box-title">Novo tipo de treino</h3>
+    </div>
+    <form class="form-horizontal" #form="ngForm" (ngSubmit)= "register()">
+      <div [ngClass]="classCss" role="alert" *ngIf="message">
+          <strong>{{ message.text }}</strong>
+      </div>
+      <div class="box-body">
+        <div [ngClass]="getFromGroupClass(nome.invalid, nome.dirty)">
+          <label for="inputNome" class="col-sm-2 control-label">Nome</label>
+          <div class="col-sm-10">
+            <input 
+                [(ngModel)] = "tipoTreino.nome"
+                #nome="ngModel"
+                class="form-control" 
+                id="inputNome" 
+                placeholder="Nome" 
+                required
+                name="nome"
+                >
+            <span class="help-block" *ngIf="nome.invalid && nome.dirty"> Nome é necessário </span>
+          </div>
+        </div>
+        <div [ngClass]="getFromGroupClass(false, true)">
+          <label for="textareaDescricao" class="col-sm-2 control-label">Descrição</label>
+          <div class="col-sm-10">
+            <textarea 
+                [(ngModel)] = "tipoTreino.descricao"
+                #descricao="ngModel"
+                class="form-control" 
+                id="textareaDescricao" 
+                placeholder="Descrição" 
+                name="descricao"
+                rows="3"
+                cols="50"
+                ></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="box-footer">
+        <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Salvar</button>
+      </div>
+    </form>
+  </div>
+  </div>
