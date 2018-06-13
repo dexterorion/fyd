@@ -21,10 +21,9 @@ export class HeaderComponent implements OnInit {
   }
 
   signOut() : void {
-    this.shared.token = null;
-    this.shared.user = null;
     localStorage.removeItem('currentToken');
     localStorage.removeItem('currentUser');
+    this.shared.showTemplate.emit(false);
     SharedService.emptyInstance();
 
     window.location.href = "/login";
